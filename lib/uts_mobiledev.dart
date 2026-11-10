@@ -90,12 +90,102 @@ class ProfilePage extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 20),
+                // CARD INFORMASI KONTAK
+                  Card(
+                    color: const Color.fromARGB(255, 151, 111, 211),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          const Text(
+                            'Informasi Kontak',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                          const InfoTile(
+                            icon: Icons.email,
+                            label: 'Email',
+                            value: 'umam@gmail.com',
+                          ),
+
+                          const InfoTile(
+                            icon: Icons.phone,
+                            label: 'Nomor HP',
+                            value: '081234567890',
+                          ),
+
+                          const InfoTile(
+                            icon: Icons.school,
+                            label: 'Kelas',
+                            value: 'TI SE24',
+                          ),
+
+                          const InfoTile(
+                            icon: Icons.code,
+                            label: 'GitHub',
+                            value: 'https://github.com/umam171003',
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+
+
                 ],
               ),
             ),
           ),
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Terima kasih telah melihat profil saya',
+              ),
+            ),
+          );
+        },
+        child: const Icon(Icons.message),
+      ),
+
     );
   }
 }
+    
+    
+
+//tahap 3
+
+class InfoTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+
+  const InfoTile({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(label),
+      subtitle: Text(value),
+    );
+  }
+  
+}
+
